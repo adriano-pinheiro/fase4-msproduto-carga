@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:latest
+    container_name: msprodutos-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 112233
+      MYSQL_DATABASE: produtos
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+volumes:
+  mysql-data:
