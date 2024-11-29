@@ -8,4 +8,4 @@ CREATE TABLE IF NOT EXISTS tb_produtos (
     dt_importacao DATETIME
     );
 
-UPDATE produto SET ativo = false;
+UPDATE tb_produtos SET ativo = false;
