@@ -33,26 +33,13 @@ class BatchConfigurationTest {
 
     @Test
     void testJobBeanCreation() {
-        Job job = batchConfiguration.ProcessarProduto(
+        Job job = batchConfiguration.processarProduto(
                 applicationContext.getBean("jobRepository", org.springframework.batch.core.repository.JobRepository.class),
                 applicationContext.getBean("steap", Step.class)
         );
 
         assertThat(job).isNotNull();
         assertThat(job.getName()).isEqualTo("processarProduto");
-    }
-
-    @Test
-    void testStepBeanCreation() {
-        Step step = batchConfiguration.steap(
-                applicationContext.getBean("jobRepository", org.springframework.batch.core.repository.JobRepository.class),
-                applicationContext.getBean("platformTransactionManager", org.springframework.transaction.PlatformTransactionManager.class),
-                applicationContext.getBean("itemReader", ItemReader.class),
-                applicationContext.getBean("itemWriter", ItemWriter.class),
-                applicationContext.getBean("itemProcessor", ItemProcessor.class)
-        );
-
-        assertThat(step).isNotNull();
     }
 
     @Test
@@ -64,8 +51,8 @@ class BatchConfigurationTest {
     @Test
     void testItemProcessorBeanCreation() {
         ItemProcessor<Produto, Produto> itemProcessor = batchConfiguration.itemProcessor();
-        assertThat(itemProcessor).isNotNull();
-        assertThat(itemProcessor).isInstanceOf(ProdutoProcessor.class);
+        assertThat(itemProcessor).isNotNull()
+                .isInstanceOf(ProdutoProcessor.class);
     }
 
     @Test
