@@ -23,7 +23,7 @@ import javax.sql.DataSource;
 public class BatchConfiguration {
 
     @Bean
-    public Job ProcessarProduto(JobRepository jobRepository, Step step){
+    public Job processarProduto(JobRepository jobRepository, Step step){
         return new JobBuilder("processarProduto", jobRepository)
                 .incrementer(new RunIdIncrementer())
                 .start(step)
